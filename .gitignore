@@ -1,0 +1,3 @@
+data/out_files/*.txt
+data/out_files/*.json
+data/pdf_files/*.pdf
