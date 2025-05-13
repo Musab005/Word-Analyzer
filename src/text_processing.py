@@ -1,9 +1,12 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
+import re
 
 
 def read_stop_words(stop_words_path):
-    with open(stop_words_path, 'r', encoding='utf-8') as f:
-        return [line.strip().lower() for line in f if line.strip()]
+    with open(stop_words_path, "r", encoding="utf-8") as f:
+        raw_words = f.read().splitlines()
+    pattern = re.compile(r"\b\w\w+\b", flags=re.UNICODE)
+    return [word for word in raw_words if pattern.fullmatch(word)]
 
 
 def compute_tfidf(documents, stop_words):
